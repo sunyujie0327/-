@@ -1,0 +1,29 @@
+#include <stdio.h>
+int main()
+{
+	int n,i,a[20],b[20],max,k=0;
+	scanf("%i",&n);
+	for(i=0;i<n;i++)
+		scanf("%d",&a[i]);
+	b[0]=a[0];
+	max=a[0];
+	for(i=0;i<n;i++)
+		if(a[i]<0)
+			k++;
+	if(k==6)
+		printf("0");
+	else 
+	{
+		for(i=1;i<n;i++)
+		{
+			if(b[i-1]>0)
+				b[i]=b[i-1]+a[i];
+			else b[i]=a[i];
+			if(b[i]>max)
+				max=b[i];
+		}
+		printf("最大子段和为%d",max);
+	}
+		
+	return 0;
+}
